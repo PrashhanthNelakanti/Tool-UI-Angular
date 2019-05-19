@@ -1,0 +1,48 @@
+a {
+    background-color: #f44336;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+a:hover, a:active {
+    background-color: rgb(167, 7, 7);
+    text-decoration: underline;
+}
+
+.colorB{
+    color:white;
+    font-size: 35px;
+    font-family: "Times New Roman", Times, serif;
+    background-color: rgb(59, 56, 56); 
+}
+
+.colorW{
+    color: black;
+    font-size: 35px;
+    font-family: "Times New Roman", Times, serif;
+    background-color: white;
+}
+img {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+
+  }
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom:0;
+    width: 100%;
+    color: rgb(15, 15, 15);
+    background-color: rgb(243, 237, 237);
+    
+  }
+
+  .graph{
+      width: 50vw;
+      height: 80vh;
+  }

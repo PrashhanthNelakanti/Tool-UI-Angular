@@ -1,0 +1,27 @@
+<p-panel header="Product Entry">
+  <p-card>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-1">
+        Price
+      </div>
+      <div class="ui-grid-col-2">
+        <input pInputText type="text" [(ngModel)]="prod.price" placeholder="₹" />
+      </div>
+      <div class="ui-grid-col-1">
+        Product
+      </div>
+      <div class="ui-grid-col-2">
+        <input pInputText type="text" [(ngModel)]="prod.product" placeholder="Product Name" />
+      </div>
+      <div class="ui-grid-col-1">
+        Product Description
+      </div>
+      <div class="ui-grid-col-1">
+        <textarea pInputTextarea [rows]="5" [(ngModel)]="prod.prodDesc" [cols]="30" type="text" [(ngModel)]="msg"></textarea>
+      </div>
+    </div>
+    <p-fileUpload chooseLabel="Choose" uploadLabel="Upload" cancelLabel="Cancel" name="files" url="http://localhost:8085/ays/uploadMultipleFiles1"
+      (onUpload)="postData($event)" multiple="multiple" maxFileSize="1000000">
+    </p-fileUpload>
+  </p-card>
+</p-panel>

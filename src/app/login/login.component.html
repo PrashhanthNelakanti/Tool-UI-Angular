@@ -1,0 +1,36 @@
+<p-panel header="Login">
+  <p-messages [(value)]="msgs"></p-messages>
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">
+        User Name *:
+      </div>
+      <div class="ui-grid-col-2">
+        <input pInputText type="text"  [(ngModel)]="reg.user_name" placeholder="Required" />
+      </div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">
+        Password *:
+      </div>
+      <div class="ui-grid-col-2">
+        <input pInputText type="password" [(ngModel)]="reg.password" placeholder="Required" />
+      </div>
+      <div class="ui-grid-col-0.5" *ngIf="false">
+        <button pButton type="button" icon="pi pi-eye" iconPos="left" (click)="showPwd()"></button>
+      </div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2"></div>
+      <div class="ui-grid-col-1">
+        <button pButton type="button" label="Login" (click)="login()"></button>
+      </div>
+      <!-- <div [@openClose]="isOpen ? 'open' : 'closed'" class="open-close-container">
+        <p></p>
+      </div> -->
+    </div>
+    <p-dialog  header="WELCOME BACK" [(visible)]="display" [style]="{width: '500px', height: '500px'}">
+      Hey hi {{reg.username}}
+  </p-dialog>
+  </div>
+  

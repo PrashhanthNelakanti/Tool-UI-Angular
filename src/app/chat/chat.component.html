@@ -1,0 +1,41 @@
+<p-panel header="Customer Service (Chat-bot)">
+  <div class="ui-grid-row" *ngFor="let msg of msgs">
+    <div class="ui-grid-col-1" *ngIf="msg && echo">
+      <img src="assets\showcase\images\demo\foozilla\user.png" width="50" height="50">
+    </div>
+    <div class="ui-grid-col-6" *ngIf="msg && echo">
+      {{msgs}}
+    </div>
+  </div>
+  <div class="ui-grid-row" *ngFor="let msg of rmsgs">
+    <div class="ui-grid-col-1" *ngIf="msg">
+      <img src="assets\showcase\images\demo\foozilla\logo.png" width="50" height="50">
+    </div>
+    <div class="ui-grid-col-6">
+     {{rmsgs}}
+    </div>
+  </div>
+</p-panel> 
+<!-- create buttons red 100  -->
+<p-card>
+  <div class="ui-grid-row">
+    <div class="ui-grid-col-2">
+      <textarea pInputTextarea [rows]="5" [cols]="30" type="text" [(ngModel)]="msg" (keyup.enter)="sendMsg()"></textarea>
+    </div>
+    <div class="ui-grid-col-1">.</div>
+    <div class="ui-grid-col-2">
+      <button pButton type="button" label="Send" (click)="sendMsg()"></button>
+    </div>
+  </div>
+</p-card>
+
+<p-dialog header="{{title}}" [(visible)]="display">
+    <img *ngIf="show" src="assets\showcase\images\demo\foozilla\hc.gif" width="300" height="450">
+    <img *ngIf="!show" src="assets\showcase\images\demo\foozilla\bean.gif" width="220" height="250">
+</p-dialog>
+
+<div class="ui-grid-col-2" *ngFor="let x of y">
+     <button pButton type="button" *ngIf="color=='yellow'" label="bot" class="ui-button-warning"></button>
+     <button pButton type="button" *ngIf="color=='green'" label="bot" class="ui-button-success"></button>
+     <button pButton type="button" *ngIf="color=='red'" label="bot" class="ui-button-danger"></button>
+   </div>

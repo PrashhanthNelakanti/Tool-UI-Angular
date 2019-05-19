@@ -1,0 +1,72 @@
+<div class="g">For New Request, Select the Group and then Assign Individual </div>
+<p-panel header="Request">
+  <p-messages [(value)]="msgs"></p-messages>
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">
+        User Name
+      </div>
+      <div class="ui-grid-col-2">
+        <input pInputText type="text" [readonly]="true" [(ngModel)]="req.requestedBy" />
+      </div>
+      <div class="ui-grid-col-5"></div>
+      <div class="ui-grid-col-2">
+        Requested On
+      </div>
+      <div class="ui-grid-col-1">
+        <div>{{req.requested_on | date:"medium"}}</div>
+      </div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">
+        Issue
+      </div>
+      <div class="ui-grid-col-6">
+        <textarea pInputTextarea type="text" [readonly]="true" [rows]="2" [cols]="30" autoResize="true" [(ngModel)]="req.request"></textarea>
+      </div>
+      <div class="vl" *ngIf="resolve">Issue Now Resolved</div>
+    </div>
+    <div class="ui-grid-row" *ngIf="!resolve">
+      <div class="ui-grid-col-2">
+        Notes
+      </div>
+      <div class="ui-grid-col-6">
+        <textarea pInputTextarea type="text" [rows]="1" [cols]="30" autoResize="true" [(ngModel)]="reqAct.notes"></textarea>
+      </div>
+      <div class="ui-grid-col-2">
+        <p-autoComplete [(ngModel)]="reqAct.assignedGrp" [suggestions]="filterGrps" (completeMethod)="filterGrp($event)" (focusout)="test()" [size]="30"
+          [minLength]="1" placeholder="Assign To Group" [dropdown]="true"></p-autoComplete>
+      </div>
+      <div class="ui-grid-col-2">
+        <p-autoComplete *ngIf="showMember" [(ngModel)]="reqAct.assignedTo" [suggestions]="filteredUsers" (completeMethod)="filterMember($event)" [size]="30"
+          [minLength]="1" placeholder="Assign To" [dropdown]="true"></p-autoComplete>
+      </div>
+    </div>
+    <div class="ui-grid-row" *ngIf="!resolve">
+      <div class="ui-grid-col-2"></div>
+      <div class="ui-grid-col-1">
+        <button pButton type="button" label="Submit" (click)="send()"></button>
+      </div>
+      <div class="ui-grid-col-2">
+        <button pButton type="button" class="ui-button-success" label="Resolve Issue" (click)="resolved(reqAct)"></button>
+      </div>
+    </div>
+  </div>
+</p-panel>
+
+<p-table [columns]="cols" [value]="requestDObj">
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th [ngStyle]="{width: '70%'}">Notes</th>
+      <th [ngStyle]="{width: '20%'}">Assigned To</th>
+      <th [ngStyle]="{width: '10%'}">Activity On</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-req>
+    <tr>
+      <td>{{req.notes}}</td>
+      <td>{{req.assignedTo}} from {{req.assignedGrp}}</td>
+      <td>{{req.activityDate | date:"medium"}}</td>
+    </tr>
+  </ng-template>
+</p-table>

@@ -1,0 +1,29 @@
+<p-table [columns]="cols" [value]="requestObj">
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th [ngStyle]="{width: '2%'}"></th>
+            <th [ngStyle]="{width: '8%'}">Ticket Number</th>
+            <th [ngStyle]="{width: '12%'}">Requested By</th>
+            <th [ngStyle]="{width: '50%'}">Request</th>
+            <th [ngStyle]="{width: '8%'}">Requested On</th>
+            <th [ngStyle]="{width: '12%'}">Assigned To</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-req>
+        <tr>
+            <td>
+                <div class="dot" [ngClass]="{'red':req.status=='N','blue':req.status=='IN','yellow':req.status=='C','green':req.status=='R'}"></div>
+            </td>
+            <td>
+                <a routerLink="/reqD/{{req.request_id}}/{{req.assignedTo}}" routerLinkActive="active">{{req.request_id}}</a>
+            </td>
+            <td [ngStyle]="{width: '20%'}">{{req.requestedBy}}</td>
+            <td [ngStyle]="{width: '50%'}">{{req.request}}</td>
+            <td [ngStyle]="{width: '20%'}">{{req.requested_on | date:"medium"}}</td>
+            <td> {{req.assignedTo}} </td>
+            <td>
+                <button pButton type="button" label="Submit" (click)="send(req)"></button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

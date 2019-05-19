@@ -1,0 +1,28 @@
+.dot {
+    height: 15px;
+    width: 15px;
+    opacity:0.5;
+    background-color: red;  
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .green{
+    opacity:0.5;
+    background-color: green;  
+  }
+
+  .yellow{
+    opacity:0.5;
+    background-color: yellow;  
+  }
+
+
+  .red{
+    opacity:0.5;
+    background-color: red;  
+  }
+
+  .blue{
+    opacity:0.5;
+    background-color: blue;  
+  }

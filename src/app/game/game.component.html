@@ -1,0 +1,41 @@
+<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+  <div class="ui-grid-row">
+    <div class="ui-grid-col-6">
+      Player 1
+    </div>
+    <div class="ui-grid-col-1 adj">Score</div>
+    <div class="ui-grid-col-2">
+      Player 2
+    </div>
+  </div>
+  <div class="ui-grid-row">
+    <div class="ui-grid-col-2">
+      <button pButton type="button" label="stone" *ngIf="p1Enable" (click)="getP1Stone()"></button>
+    </div>
+    <div class="ui-grid-col-2">
+      <button pButton type="button" label="paper" *ngIf="p1Enable" (click)="getP1Paper()"></button>
+    </div>
+    <div class="ui-grid-col-2">
+      <button pButton type="button" label="scissors" *ngIf="p1Enable" (click)="getP1Scissor()"></button>
+    </div>
+    <div class="ui-grid-col-2">.</div>
+    <div class="ui-grid-col-2">
+      <button pButton type="button" label="stone" *ngIf="p2Enable" class="ui-button-raised ui-button-danger" (click)="getP2Stone()"></button>
+    </div>
+    <div class="ui-grid-col-2">
+      <button pButton type="button" label="paper" *ngIf="p2Enable" class="ui-button-raised ui-button-danger" (click)="getP2Paper()"></button>
+    </div>
+    <div class="ui-grid-col-2">
+      <button pButton type="button" label="scissors" *ngIf="p2Enable" class="ui-button-raised ui-button-danger" (click)="getP2Scissor()"></button>
+    </div>
+  </div>
+  <div class="ui-grid-row">
+    <div class="ui-grid-col-6">
+     {{p1Count}}
+    </div>
+    <div class="ui-grid-col-1 adj">VS</div>
+    <div class="ui-grid-col-2">
+     {{p2Count}}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<p-table [columns]="cols" [value]="polling">
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th [ngStyle]="{width: '70%'}">Party</th>
+      <th [ngStyle]="{width: '70%'}">Party</th>
+      <th [ngStyle]="{width: '20%'}">Polls</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-poll>
+    <tr>
+        <td>{{poll.id}}</td>
+      <td (click)="vote(poll)">{{poll.party}}</td>
+      <td>{{poll.polls}}</td>
+    </tr>
+  </ng-template>
+</p-table>
+
+<div style="color:grey">
+Last Updated on 
+{{time  | date:"medium"}}
+</div>

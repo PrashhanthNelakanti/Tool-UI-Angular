@@ -1,0 +1,93 @@
+
+<p-panel header="Order Status">
+  <!-- <p-progressBar class="customProgress" [value]="value" ></p-progressBar> -->
+  <div class="ui-g">
+    <div class="ui-g-5">.</div>
+    <div class="ui-g-0.5" *ngFor="let levels of level">
+      <div [ngClass]="{'b':levels<=length , 'a':levels>=length, 'c':length<0}"></div>
+    </div>
+    <div class="ui-g-1">{{state}}</div>
+  </div>
+
+  <div class="ui-g" style="padding: 1em;border-bottom: 1px solid #d9d9d9">
+    <div class="ui-g-12 ui-md-3" style="text-align:center">
+      <img src="assets\showcase\images\demo\foozilla\food\chicken\{{products.fileUrl}}">
+    </div>
+    <div class="ui-g-12 ui-md-8 car-details">
+      <div class="ui-g">
+        <div class="ui-g-2 ui-sm-6">Item: </div>
+        <div class="ui-g-10 ui-sm-6">
+          <b>{{products.product}}</b>
+        </div>
+
+        <div class="ui-g-2 ui-sm-6">Price: </div>
+        <div class="ui-g-10 ui-sm-6">
+          <b>{{products.price}}</b>
+        </div>
+
+        <div class="ui-g-2 ui-sm-6">Description: </div>
+        <div class="ui-g-10 ui-sm-6">
+          <b>{{products.prodDesc}}</b>
+        </div>
+
+        <div class="ui-g-2 ui-sm-6">Units: </div>
+        <div class="ui-g-10 ui-sm-6">
+          <b>{{products.units}}</b>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="ui-grid-row" *ngIf="false">
+    <div class="ui-grid-col-2">.</div>
+    <div class="ui-grid-col-1">
+      Order Placed
+    </div>
+    <div class="ui-grid-col-1">
+      .
+    </div>
+    <div class="ui-grid-col-1">
+      Order In Kitchen
+    </div>
+    <div class="ui-grid-col-1">
+      .
+    </div>
+    <div class="ui-grid-col-1">
+      About to Deliver
+    </div>
+    <div class="ui-grid-col-1">
+      .
+    </div>
+    <div class="ui-grid-col-1">
+      Delivered
+    </div>
+  </div>
+  <div class="ui-grid-row" *ngIf="false">
+    <div class="ui-grid-col-2">.</div>
+    <div class="ui-grid-col-1">
+      <img src="assets/showcase/images/demo/foozilla/tick.png" height="75" width="75">
+    </div>
+    <div class="ui-grid-col-1">
+      <hr>
+    </div>
+    <div class="ui-grid-col-1">
+      <img src="assets/showcase/images/demo/foozilla/inprocess.png" height="75" width="75">
+    </div>
+    <div class="ui-grid-col-1">
+      <hr>
+    </div>
+    <div class="ui-grid-col-1">
+      <img src="assets/showcase/images/demo/foozilla/inprocess.png" height="75" width="75">
+    </div>
+    <div class="ui-grid-col-1">
+      <hr>
+    </div>
+    <div class="ui-grid-col-1">
+      <img src="assets/showcase/images/demo/foozilla/inprocess.png" height="75" width="75">
+    </div>
+  </div>
+
+
+</p-panel>

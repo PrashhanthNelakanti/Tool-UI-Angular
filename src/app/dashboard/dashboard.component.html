@@ -1,0 +1,16 @@
+<p-panel header="Admin Dash-Board">
+  <p-messages [(value)]="msgs"></p-messages>
+  <p-card>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-1">
+        User Name:
+      </div>
+      <div class="ui-grid-col-2">
+        <input pInputText type="text" [(ngModel)]="reg.user_name" placeholder="User Name" />
+      </div>
+      <div class="ui-grid-col-1">
+        <button pButton type="button" label="Unlock" (click)="unlock()"></button>
+      </div>
+    </div>
+  </p-card>
+</p-panel>

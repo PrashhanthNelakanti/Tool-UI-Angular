@@ -1,0 +1,15 @@
+<p-panel header="Served Area">
+  <div class="ui-grid-row">
+    <div class="ui-grid-col-2">
+      Choose the Servered Areas *:
+    </div>
+    <div class="ui-grid-col-2">
+      <p-dropdown [options]="serviceCenter" (onChange)="getServerdArea($event)" [autoWidth]="false"></p-dropdown>
+    </div>
+  </div>
+  <div class="ui-grid-row">
+    <div class="ui-grid-col-2">
+      {{servedArea}}
+    </div>
+  </div>
+</p-panel>

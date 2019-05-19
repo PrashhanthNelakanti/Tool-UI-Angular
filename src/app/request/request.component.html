@@ -1,0 +1,64 @@
+<p-accordion>
+  <p-accordionTab header="View Your Requests">
+    <p-table [columns]="cols" [value]="requestObj">
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th [ngStyle]="{width: '2%'}"></th>
+          <th [ngStyle]="{width: '8%'}">Request Id</th>
+          <th [ngStyle]="{width: '8%'}">Requested By</th>
+          <th [ngStyle]="{width: '60%'}">Request</th>
+          <th [ngStyle]="{width: '8%'}">Requested On</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-req>
+        <tr>
+          <td>
+            <div class="dot" [ngClass]="{'red':req.status=='N','blue':req.status=='IN','yellow':req.status=='C','green':req.status=='R'}"></div>
+          </td>
+          <td>{{req.request_id}}</td>
+          <td>{{req.requestedBy}}</td>
+          <td>{{req.request}}</td>
+          <td>{{req.requested_on | date:"medium"}}</td>
+          <td *ngIf="req.isResolved">
+            <button pButton type="button" label="ReOpen" (click)="reopen(req)"></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </p-accordionTab>
+</p-accordion>
+<p-panel header="Request">
+  <p-messages [(value)]="msgs"></p-messages>
+  <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">
+        Requested By*:
+      </div>
+      <div class="ui-grid-col-2">
+        <input pInputText type="text" id="userId" [readonly]="true" [(ngModel)]="user_name" placeholder="Required" />
+      </div>
+      <div class="ui-grid-col-2">
+        Assign To:
+      </div>
+      <div class="ui-grid-col-2">
+        <p-autoComplete [(ngModel)]="req.assignedGrp" [suggestions]="filterGrps" (completeMethod)="filterGrp($event)"
+          [size]="30" [minLength]="1" placeholder="Assign To Group" [dropdown]="true"></p-autoComplete>
+      </div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2">
+        Issue *:
+      </div>
+      <div class="ui-grid-col-6">
+        <textarea pInputTextarea type="text" id="userId" [rows]="5" [cols]="30" autoResize="true" [(ngModel)]="req.request"></textarea>
+      </div>
+    </div>
+
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-2"></div>
+      <div class="ui-grid-col-1">
+        <button pButton type="button" label="Submit" (click)="send()"></button>
+      </div>
+    </div>
+  </div>
+</p-panel>

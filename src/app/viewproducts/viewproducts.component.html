@@ -1,0 +1,101 @@
+<p-dataView #dv [value]="products" [paginator]="true" [rows]="5" paginatorPosition="both" filterBy="brand" [sortField]="sortField"
+    [sortOrder]="sortOrder">
+    <p-header>
+        <div class="ui-helper-clearfix">
+            <div class="ui-g">
+                <div class="ui-g-12 ui-md-4">
+                    <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sort By" (onChange)="onSortChange($event)" [autoWidth]="false"
+                        [style]="{'min-width':'15em'}"></p-dropdown>
+                </div>
+                <div class="ui-g-6 ui-md-4 filter-container">
+                    <div style="position:relative">
+                        <input type="search" pInputText placeholder="Search by brand" (keyup)="dv.filter($event.target.value)">
+                    </div>
+                </div>
+                <div class="ui-g-6 ui-md-4" style="text-align:right">
+                    <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+                </div>
+            </div>
+        </div>
+    </p-header>
+    <ng-template let-car pTemplate="listItem">
+        <div class="ui-g" style="width:50%;padding: 0em;border-bottom: 1px solid #d9d9d9">
+            <div class="ui-g-8 ui-md-4">
+                <img class="w" src="\assets\showcase\images\demo\fkart\{{car.fileUrl}}" (click)="collectData(car)">
+            </div>
+            <div class="ui-g-6 ui-md-8 car-details">
+                <div class="ui-g">
+                    <div class="ui-g-3 ui-sm-3">Item: </div>
+                    <div class="ui-g-9 ui-sm-3">
+                        <b>{{car.product}}</b>
+                    </div>
+                    <div class="ui-g-3 ui-sm-6">Price: </div>
+                    <div class="ui-g-9 ui-sm-6">
+                        <b>{{car.price}}</b>
+                    </div>
+
+                    <div class="ui-g-3 ui-sm-6">Description: </div>
+                    <div class="ui-g-9 ui-sm-6">
+                        <b>{{car.prodDesc}}</b>
+                    </div>
+
+                    <div class="ui-g-3 ui-sm-3">Units: </div>
+                    <div class="ui-g-3 ui-sm-6" style="width:30%">
+                        <p-spinner (click)="do(a1.value)" size="30" [(ngModel)]="car.units"></p-spinner>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template let-car pTemplate="gridItem">
+        <div style="padding:.5em" class="ui-g-12 ui-md-3">
+            <p-panel [header]="car.vin" [style]="{'text-align':'center'}">
+                <img src="assets\showcase\images\demo\fkart\{{car.fileUrl}}" width="60">
+                <div class="car-detail">{{car.product}} - {{car.price}}</div>
+                <input pInputText type="text" [(ngModel)]="car.price" placeholder="₹" />
+                <input pInputText type="text" [(ngModel)]="car.product" placeholder="₹" />
+                <hr class="ui-widget-content" style="border-top:0">
+                <button type="button" (click)="updateProd($event)" pButton icon="pi pi-info-circle" label="Update"></button>
+            </p-panel>
+        </div>
+    </ng-template>
+</p-dataView>
+<div class="footer" *ngIf="display">
+    <div class="ui-g">
+        <div class="ui-g-2">
+            Select Payment:
+        </div>
+        <div class="ui-g-7">
+            <p-selectButton class="ui-g-5" [options]="types" [(ngModel)]="selectedType"></p-selectButton>
+        </div>
+        <div>
+            <button  type="button" (click)="updateProd($event)" pButton icon="fa fa-money" label="Amt {{amt}}"></button>
+        </div>
+    </div>
+</div>
+<!-- <p-dialog header="update" [(visible)]="display">
+    <p-panel header="Product Entry">
+        <p-card>
+            <div class="ui-grid-row">
+                <img src="assets\showcase\images\demo\foozilla\food\chicken\{{car.fileUrl}}" width="60">
+                <div class="ui-grid-col-2">
+                    Price
+                </div>
+                <div class="ui-grid-col-2">
+                    <input pInputText type="text" [(ngModel)]="prod.price" placeholder="₹" />
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Product
+                </div>
+                <div class="ui-grid-col-2">
+                    <input pInputText type="text" [(ngModel)]="prod.product" placeholder="Product Name" />
+                </div>
+            </div>
+            <p-fileUpload chooseLabel="Choose" uploadLabel="Upload" cancelLabel="Cancel" name="files" url="http://localhost:8082/pms/uploadMultipleFiles1"
+                (onUpload)="postData($event)" multiple="multiple" maxFileSize="1000000">
+            </p-fileUpload>
+        </p-card>
+    </p-panel>
+</p-dialog> -->

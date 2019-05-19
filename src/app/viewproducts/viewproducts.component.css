@@ -1,0 +1,19 @@
+.w{
+    width:200px;
+    height: 200px;
+}
+
+.si{
+    font-size:48px;
+}
+
+.footer {
+    position: fixed;
+    left: 10%;
+    bottom:0;
+    width: 80%;
+    height:8%;
+    color: white;
+    background-color:rgb(17, 16, 16); 
+    text-align: center;
+  }
