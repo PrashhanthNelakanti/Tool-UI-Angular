@@ -14,6 +14,7 @@ export class PollingComponent implements OnInit {
   constructor(private service: ServiceComponent, private _http: HttpClient, private router: Router, private commonService: CommonserviceService, private route: ActivatedRoute) { }
    polling:any;
    time:any;
+   cols:any;
   ngOnInit() {
     this.getParties();
     this.refreshData();

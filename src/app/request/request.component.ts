@@ -20,6 +20,7 @@ export class RequestComponent implements OnInit {
   filteredGrps: any[];
   cols: any[];
   filterGrps: any;
+  assignedGrp: any;
 
   constructor(private service: ServiceComponent, private _http: HttpClient, private router: Router, private commonService: CommonserviceService) { }
   

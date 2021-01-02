@@ -8,5 +8,6 @@ export class Request{
     resolvedByGrp:string;
     workingBy:string;
     workingByGrp:string;
+    assignedGrp:string;
     isResolved:boolean;
 }
