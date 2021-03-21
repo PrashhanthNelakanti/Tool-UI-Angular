@@ -59,3 +59,14 @@ input[type=text] {
 input[type=text]:focus {
   width: 100%;
 }
+
+.button__badge {
+  background-color: #fc5858;
+  border-radius: 2px;
+  color: white;
+  padding: 1px 3px;
+  font-size: 15px;
+  
+  position: absolute; /* Position the badge within the relatively positioned button */
+  
+}

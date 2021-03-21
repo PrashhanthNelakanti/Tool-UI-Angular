@@ -13,20 +13,17 @@ export class PollingComponent implements OnInit {
 
   constructor(private service: ServiceComponent, private _http: HttpClient, private router: Router, private commonService: CommonserviceService, private route: ActivatedRoute) { }
    polling:any;
+   polling1:any;
    time:any;
    cols:any;
   ngOnInit() {
     this.getParties();
     this.refreshData();
     this.getTime();
-    setInterval(function() {
-      this.getParties();
-  }, 60 * 1000);
   }
 
   getParties() {
     this._http.get(this.commonService.basePath + "polling/party").subscribe(res1 => {
-      console.log(res1);
       this.polling=res1;
     });  
   }
@@ -40,13 +37,12 @@ export class PollingComponent implements OnInit {
 
   vote(poll:any){
     this._http.get(this.commonService.basePath + "polling/vote/"+poll.id).subscribe(res1 => {
-      console.log(res1);
       this.getParties();
     });  
   }
 
   refreshData(){
-    this.polling =
+    this.polling1 =
       setInterval(() => {
         this.getParties();
         //Passing the false flag would prevent page reset to 1 and hinder user interaction

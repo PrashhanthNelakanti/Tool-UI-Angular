@@ -30,7 +30,7 @@ export class AdminComponent implements OnInit {
   styles:any;
   current_user:string;
   sub:any;
-
+  ticketCount:number;
   
   constructor(private route: ActivatedRoute,private service: ServiceComponent, private _http: HttpClient, private router: Router, private commonService: CommonserviceService) { }
   display: boolean = false;
@@ -62,12 +62,14 @@ export class AdminComponent implements OnInit {
       { label: 'Completed', value: 'C' },
       { label: 'Resolved', value: 'R' },
     ];  
-   
+    ;
   }
 
   getRequests() {
     this._http.get(this.commonService.basePath + "requestByGrp/"+sessionStorage.getItem("sesGrp")+"/"+this.current_user).subscribe(res => {
       this.requestObj = res;
+      console.log(Object.keys(this.requestObj).length);
+      this.commonService.getCount(Object.keys(this.requestObj).length);
     });
   }
 
@@ -93,4 +95,6 @@ send(req: any) {
       }
     );
   }
+
+  
 }

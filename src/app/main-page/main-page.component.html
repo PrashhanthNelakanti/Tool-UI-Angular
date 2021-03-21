@@ -5,7 +5,7 @@
   <a routerLink="/home" routerLinkActive="active"><img src="assets\showcase\images\demo\foozilla\jap.png"/></a>
   <a routerLink="/reg" routerLinkActive="active">REGISTER</a>
   <a routerLink="/req" routerLinkActive="active" *ngIf="message">REQUESTS</a>
-  <a routerLink="/tickets/{{name}}" routerLinkActive="active">TICKETS</a>
+  <a routerLink="/tickets/{{name}}" routerLinkActive="active">TICKETS<span class="button__badge" *ngIf="count>0">{{count}}</span></a>
   <a routerLink="/poll" routerLinkActive="active">POLLING</a>
   <a routerLink="/dashBoard" routerLinkActive="active" *ngIf="msg">DASH-BOARD</a>
   <a routerLink="/login" routerLinkActive="active" *ngIf="!message">LOGIN</a>
