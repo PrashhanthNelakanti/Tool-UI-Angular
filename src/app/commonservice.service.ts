@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,9 @@ export class CommonserviceService {
    basePath: string = 'http://localhost:8085/ays/';
    //basePath: string = 'http://192.168.43.52:8085/ays/';
    filterMembers:any;
+    count=new BehaviorSubject<number>(0);
+   cast=this.count.asObservable();
+
    constructor(private commonService:CommonserviceService,private _http:HttpClient) { }
 
   getMembers(){
@@ -20,5 +24,9 @@ export class CommonserviceService {
       console.log(this.filterMembers)
     });
     return this.filterMembers;
+  }
+
+  getCount(newCount){
+    this.count.next(newCount);
   }
 }
