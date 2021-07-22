@@ -33,7 +33,7 @@
     "primeng": "^6.0.0",
     "rxjs": "^6.0.0",
     "save": "^2.3.3",
-    "xlsx": "^0.13.3",
+    "xlsx": "^0.17.0",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
